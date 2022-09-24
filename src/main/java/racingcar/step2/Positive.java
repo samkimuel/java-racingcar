@@ -13,9 +13,7 @@ public class Positive {
 	}
 
 	public Positive(int number) {
-		if (isNegative(number)) {
-			throw new NumberFormatException(NEGATIVE_NUMBER_MESSAGE);
-		}
+		validateNegativeNumber(number);
 
 		this.number = number;
 	}
@@ -24,8 +22,14 @@ public class Positive {
 		return Integer.parseInt(value);
 	}
 
+	private void validateNegativeNumber(int number) {
+		if (isNegative(number)) {
+			throw new NumberFormatException(NEGATIVE_NUMBER_MESSAGE);
+		}
+	}
+
 	public Positive plus(Positive positive) {
-		return new Positive(this.number + positive.number());
+		return new Positive(this.number + positive.getNumber());
 	}
 
 	private boolean isNegative(int number) {
@@ -49,7 +53,7 @@ public class Positive {
 		return Objects.hash(number);
 	}
 
-	public int number() {
+	public int getNumber() {
 		return this.number;
 	}
 }

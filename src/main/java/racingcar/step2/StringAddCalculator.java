@@ -44,7 +44,7 @@ public class StringAddCalculator {
 			positives.add(toPositive(value));
 		}
 
-		return positives;
+		return List.copyOf(positives);
 	}
 
 	private static Positive toPositive(String value) {
@@ -57,6 +57,6 @@ public class StringAddCalculator {
 			result = result.plus(positive);
 		}
 
-		return result.number();
+		return result.getNumber();
 	}
 }
